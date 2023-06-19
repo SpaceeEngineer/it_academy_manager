@@ -1,0 +1,15 @@
+export const USER_SERVICE = 'USER_SERVICE';
+
+export const ROLE_SERVICE = 'ROLE_SERVICE';
+
+export const COURSE_SERVICE = 'COURSE_SERVICE';
+
+export const MAIL_SERVICE = 'MAIL_SERVICE';
+
+export const USER_LOGIN_HISTORY_SERVICE = 'USER_LOGIN_HISTORY_SERVICE';
+
+export const AUTH_SERVICE = 'AUTH_SERVICE';
+
+export const LESSON_SERVICE = 'LESSON_SERVICE';
+
+export const HASH_SERVICE = 'HASH_SERVICE'
