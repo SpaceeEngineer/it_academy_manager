@@ -8,6 +8,7 @@ import { AuthModule } from 'src/auth/auth.module';
 import { UsersModule } from 'src/users/users.module';
 import { diLessonService } from 'src/shared/diConfig/serviceDiConfig';
 import { diLessonRepository } from 'src/shared/diConfig/daoDiConfig';
+import { CoursesModule } from 'src/courses/courses.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { diLessonRepository } from 'src/shared/diConfig/daoDiConfig';
     RolesModule,
     forwardRef(() => AuthModule),
     forwardRef(() => UsersModule),
+    forwardRef(() => CoursesModule),
   ],
   controllers: [LessonsController],
   providers: [diLessonService, diLessonRepository],

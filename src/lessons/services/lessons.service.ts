@@ -6,12 +6,16 @@ import { ILessonService } from '../interfaces/ILessonService';
 import { IEditLesson } from '../interfaces/IEditLesson';
 import { ICreateLesson } from '../interfaces/ICreateLesson';
 import { ILessonInfo } from '../interfaces/ILessonInfo';
+import { COURSE_SERVICE } from 'src/shared/constants/serviceConstants';
+import { ICourseService } from 'src/courses/interfaces/ICourseService';
 
 @Injectable()
 export class LessonService implements ILessonService {
   constructor(
     @Inject(LESSON_REPOSITORY)
     private readonly lessonRepository: ILessonRepository,
+    @Inject(COURSE_SERVICE)
+    private readonly courseService: ICourseService,
   ) {}
 
   async findAll(): Promise<ILesson[]> {
@@ -26,6 +30,15 @@ export class LessonService implements ILessonService {
   }
 
   async create(data: ICreateLesson): Promise<ILesson> {
+    const req = {
+      user: {
+        roleId: 2
+      }
+    }
+    const course = await this.courseService.getOneById(data.courseId, req);
+
+    if (!course) throw new NotFoundException(`Course not found!`);
+
     return await this.lessonRepository.create(data);
   }
 
